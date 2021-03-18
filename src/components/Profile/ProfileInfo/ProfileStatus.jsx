@@ -1,17 +1,16 @@
 import React from 'react';
-import s from './ProfileInfo.module.css';
 
 class ProfileStatus extends React.Component {
     state = {
         editMode: false,
         status: this.props.status
-    }
+    };
 
     activateEditMode = () => {
         this.setState( {
             editMode: true
         } );
-    }
+    };
     deactivateEditMode() {
         this.setState( {
             editMode: false
@@ -23,7 +22,7 @@ class ProfileStatus extends React.Component {
         this.setState({
             status: e.currentTarget.value
         });
-    }
+    };
 
     componentDidUpdate(prevProps, prevState) {
 
@@ -32,12 +31,9 @@ class ProfileStatus extends React.Component {
                 status: this.props.status
             });
         }
-
-        console.log("componentDidUpdate")
     }
 
     render() {
-        console.log("render")
         return (
             <div>
                 {!this.state.editMode &&
