@@ -10,6 +10,7 @@ import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import store from "./redux/redux-store";
+import {withSuspense} from "./hoc/withSuspense";
 
 // import DialogsContainer from "./components/Dialogs/DialogsContainer";
 // import ProfileContainer from "./components/Profile/ProfileContainer";
@@ -34,15 +35,11 @@ class App extends Component {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
-                           render={() => <Suspense fallback={<div>Loading...</div>}>
-                               <DialogsContainer/>
-                           </Suspense>}
+                           render={withSuspense(DialogsContainer)}
                     />
 
                     <Route path='/profile/:userId?'
-                           render={() => <Suspense fallback={<div>Loading...</div>}>
-                               <ProfileContainer/>
-                           </Suspense>
+                           render={withSuspense(ProfileContainer)
                            }/>
 
                     <Route path='/users'
