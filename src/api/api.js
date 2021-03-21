@@ -1,6 +1,5 @@
 import * as axios from "axios";
 
-
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -47,6 +46,10 @@ export const profileAPI = {
                 'Content-Type' : 'multipart/form-data'
             }
         });
+    },
+    saveProfile(profile) {
+        return instance.put(`profile`, profile);
+
     }
 }
 
